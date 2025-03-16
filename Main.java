@@ -6,11 +6,13 @@ import java.util.Scanner;
 public class Main {
     public static final Scanner scanner = new Scanner(System.in);
     public static final ArrayList<Cat> cats = new ArrayList<>();
+
     public static void main(String[] args) {
         while (true) {
             System.out.println("1-Add new cat:");
             System.out.println("2-List cats:");
             System.out.println("3-Update cat info:");
+            System.out.println("4-Exit:");
             int choice  = scanner.nextInt();
             scanner.nextLine();
 
@@ -66,16 +68,17 @@ public class Main {
         for (int i = 0; i < cats.size(); i++) {
             System.out.println("Cat " + (i + 1) + ":");
             cats.get(i).showInfo();
-
         }
     }
+
     public static void updateCats(){
         listCats();
         System.out.println("Enter the number of the cat to update:");
         int choice = scanner.nextInt();
 
-        if (choice < 0 || choice > cats.size()){
+        if (choice < 1 || choice > cats.size()){
             System.out.println("Invalid choice");
+            return;
         }
 
         Cat selectedCat = cats.get(choice - 1);
